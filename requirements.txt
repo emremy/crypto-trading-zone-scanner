@@ -1,0 +1,6 @@
+python-binance
+pandas
+TA-Lib
+scikit-learn
+numpy
+PyQt5
