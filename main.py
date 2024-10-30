@@ -55,9 +55,6 @@ class CryptoTradingApp(QWidget):
 
         self.label = QLabel("Results:")
         
-        self.powered = QLabel("Powered by Emre M. Yılmaz")
-
-
         self.layout.addWidget(self.timeframe_label)
         self.layout.addWidget(self.timeframe_combo)
         self.layout.addWidget(self.label)
@@ -65,7 +62,6 @@ class CryptoTradingApp(QWidget):
         self.layout.addLayout(self.log_layout)
         self.layout.addWidget(self.progress_bar)
         self.layout.addWidget(self.button)
-        self.layout.addWidget(self.powered)
 
         self.buy_list.setContextMenuPolicy(Qt.CustomContextMenu)
         self.sell_list.setContextMenuPolicy(Qt.CustomContextMenu)
