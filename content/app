@@ -13,6 +13,7 @@ const options = ref({
   timezone: "Etc/UTC",
   width: "100%",
   height: "1200",
+  studies: ["STD;Bollinger_Bands", "STD;RSI"],
 });
 </script>
 <style scoped>
