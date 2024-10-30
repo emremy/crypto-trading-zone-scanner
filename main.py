@@ -1,11 +1,14 @@
 import sys
+import webbrowser
 from scanner import ScannerThread
-from PyQt5.QtWidgets import QApplication, QWidget, QPushButton, QVBoxLayout, QLabel,QListWidget,QProgressBar,QHBoxLayout,QComboBox
+from PyQt5.QtWidgets import QApplication, QWidget, QPushButton, QVBoxLayout, QLabel,QListWidget,QProgressBar,QHBoxLayout,QComboBox,QMenu
+from PyQt5.QtCore import Qt
+from helpers import replace_coin_info, check_trading_chart
 
 class CryptoTradingApp(QWidget):
-    def __init__(self):
+    def __init__(self, chart_is_enabled):
         super().__init__()
-
+        self.chart_is_enabled = chart_is_enabled
         self.setWindowTitle("Crypto Trading App")
         self.setGeometry(100, 100, 1000, 500)
 
@@ -63,8 +66,30 @@ class CryptoTradingApp(QWidget):
         self.layout.addWidget(self.progress_bar)
         self.layout.addWidget(self.button)
         self.layout.addWidget(self.powered)
+
+        self.buy_list.setContextMenuPolicy(Qt.CustomContextMenu)
+        self.sell_list.setContextMenuPolicy(Qt.CustomContextMenu)
+        self.safe_zone.setContextMenuPolicy(Qt.CustomContextMenu)
+
+        self.buy_list.customContextMenuRequested.connect(self.show_context_menu)
+        self.sell_list.customContextMenuRequested.connect(self.show_context_menu)
+        self.safe_zone.customContextMenuRequested.connect(self.show_context_menu)
         
         self.setLayout(self.layout)
+
+    def show_context_menu(self, pos):
+        menu = QMenu(self)
+        if self.chart_is_enabled:
+            open_url_action = menu.addAction("Open in Browser")
+
+            action = menu.exec_(self.sender().mapToGlobal(pos))
+
+            if action == open_url_action:
+                item = self.sender().currentItem()
+
+                replace_coin_info(item.text(), self.get_tradingview_timeframe())
+                if item:
+                    webbrowser.open("http://localhost:3000")
 
     def run_analysis(self):
         self.buy_list.clear()
@@ -117,8 +142,9 @@ class CryptoTradingApp(QWidget):
 
 
 def main():
+    chart_is_enabled = check_trading_chart()
     app = QApplication(sys.argv)
-    window = CryptoTradingApp()
+    window = CryptoTradingApp(chart_is_enabled)
     window.show()
     sys.exit(app.exec_())
 

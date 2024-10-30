@@ -4,3 +4,4 @@ TA-Lib
 scikit-learn
 numpy
 PyQt5
+requests
