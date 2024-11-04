@@ -32,3 +32,5 @@ git clone https://github.com/your-username/crypto-trading-zone-scanner.git
 cd crypto-trading-zone-scanner
 python main.py
 ```
+
+Special thanks to @volkanakkus
