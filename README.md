@@ -48,4 +48,4 @@ Start project:
 sh start.sh
 ```
 
-Special thanks to @volkanakkus
+Special thanks to [@volkanakkus](https://github.com/volkanakkus)
