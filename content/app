@@ -1,0 +1,25 @@
+<template>
+  <div class="chart-parent">
+    <Chart :options="options" />
+  </div>
+</template>
+
+<script lang="ts" setup>
+const options = ref({
+  interval: "%INTERVAL%",
+  theme: "dark",
+  autosize: true,
+  symbol: "BINANCE:%COIN%",
+  timezone: "Etc/UTC",
+  width: "100%",
+  height: "1200",
+  studies: ["STD;Bollinger_Bands", "STD;RSI"],
+});
+</script>
+<style scoped>
+.chart-parent {
+  z-index: 1;
+  width: 100%;
+  height: 1000px;
+}
+</style>
