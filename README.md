@@ -20,6 +20,8 @@
 ## Requirements
 
 - Python 3.12.4
+- Homebrew
+- Git
 
 > **Note**: Please ensure that your environment has `ta-lib` installed, as this library is essential for technical analysis.
 
@@ -30,7 +32,20 @@ Clone this repository to your local machine:
 ```bash
 git clone https://github.com/your-username/crypto-trading-zone-scanner.git
 cd crypto-trading-zone-scanner
+pip install -r requirements.txt
 python main.py
+```
+
+Install nuxt project(optional):
+
+```bash
+sh install-nuxt-tradingview.sh
+```
+
+Start project:
+
+```bash
+sh start.sh
 ```
 
 Special thanks to @volkanakkus
