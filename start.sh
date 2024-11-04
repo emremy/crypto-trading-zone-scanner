@@ -49,7 +49,7 @@ install_node_version() {
         echo "Node.js version $version is already installed, switching with nvm use"
         . ~/.nvm/nvm.sh && nvm use "$version"
     fi
-}  # Burada parantez kapatıldı
+}
 
 start_project() {
     nuxt_folder="nuxt-tradingview"
